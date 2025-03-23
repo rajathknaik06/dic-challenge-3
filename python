@@ -1,0 +1,43 @@
+"""Noah, a global analyst at a demographic research firm, has been tasked with identifying which country experienced the largest population growth over a two-year period. He has a dataset where each entry consists of a country code and its population figures for two consecutive years. Noah needs to determine which country had the highest increase in population and present the result in a specific format. 
+
+
+
+Help Noah by writing a program that outputs the country code with the largest population increase, along with the increase itself.
+
+Input format :
+The first line of input consists of an integer N, representing the number of countries.
+
+Each of the following N blocks contains three lines:
+
+The first line is a country code.
+The second line is an integer representing the population of the country in the first year.
+The third line is an integer representing the population of the country in the second year.
+Output format :
+The output displays the country code and the population increase in the format {code: difference}, where code is the country code and difference is the increase in population."""
+
+# Reading number of countries
+N = int(input())
+
+# Initialize a dictionary to store the population data
+population_data = {}
+
+# Process each country's data
+for _ in range(N):
+    # Read country code
+    country_code = input()
+    # Read populations for two years
+    year1_population = int(input())
+    year2_population = int(input())
+    
+    # Calculate the increase in population
+    increase = year2_population - year1_population
+    
+    # Store the increase in the dictionary
+    population_data[country_code] = increase
+
+# Find the country code with the largest increase
+max_increase_country = max(population_data, key=population_data.get)
+max_increase_value = population_data[max_increase_country]
+
+# Print the country code with the largest increase in population in the format {code: difference}
+print(f"{{{max_increase_country}:{max_increase_value}}}")
